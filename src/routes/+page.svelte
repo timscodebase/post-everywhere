@@ -1,21 +1,23 @@
 <script lang="ts">
-// Svelte 5 Runes for reactive state
-const _postContent = $state("");
-let selectedPlatforms = $state<string[]>([]);
+	import { enhance } from '$app/forms';
 
-const _platforms = [
-	{ id: "x", name: "X (Twitter)", icon: "🐦" },
-	{ id: "linkedin", name: "LinkedIn", icon: "💼" },
-	{ id: "facebook", name: "Facebook", icon: "📘" },
-];
+	// Svelte 5 Runes for reactive state
+	let postContent = $state("");
+	let selectedPlatforms = $state<string[]>([]);
 
-function _togglePlatform(id: string) {
-	if (selectedPlatforms.includes(id)) {
-		selectedPlatforms = selectedPlatforms.filter((p) => p !== id);
-	} else {
-		selectedPlatforms = [...selectedPlatforms, id];
+	const platforms = [
+		{ id: "x", name: "X (Twitter)", icon: "🐦" },
+		{ id: "linkedin", name: "LinkedIn", icon: "💼" },
+		{ id: "facebook", name: "Facebook", icon: "📘" },
+	];
+
+	function togglePlatform(id: string) {
+		if (selectedPlatforms.includes(id)) {
+			selectedPlatforms = selectedPlatforms.filter((p) => p !== id);
+		} else {
+			selectedPlatforms = [...selectedPlatforms, id];
+		}
 	}
-}
 </script>
 
 <div class="max-w-5xl mx-auto space-y-10 py-6 font-mono">
@@ -23,7 +25,7 @@ function _togglePlatform(id: string) {
 		<h1 class="text-4xl font-bold tracking-tighter sm:text-5xl">
 			POST_<span class="text-primary italic">EVERYWHERE</span>
 		</h1>
-		<p class="text-muted-foreground text-lg">
+		<p class="text-muted-foreground text-lg italic">
 			Create once, publish everywhere.
 		</p>
 	</header>
