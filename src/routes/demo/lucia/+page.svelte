@@ -1,5 +1,4 @@
 <script lang='ts'>
-import { enhance } from "$app/forms";
 import type { PageServerData } from "./$types";
 
 const { data }: { data: PageServerData } = $props();

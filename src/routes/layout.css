@@ -1,58 +1,60 @@
 @import "tailwindcss";
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
 
 @theme {
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+	--font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-border: var(--border);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-border: var(--border);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
 }
 
 :root {
-  --background: oklch(100% 0 0);
-  --foreground: oklch(14.5% 0 0);
-  --primary: oklch(64.5% 0.2 45); /* Orange */
-  --primary-foreground: oklch(98% 0 0);
-  --secondary: oklch(96% 0 0);
-  --secondary-foreground: oklch(14.5% 0 0);
-  --muted: oklch(96% 0 0);
-  --muted-foreground: oklch(45% 0 0);
-  --accent: oklch(96% 0 0);
-  --accent-foreground: oklch(14.5% 0 0);
-  --border: oklch(92% 0 0);
-  --radius: 0.5rem;
+	--background: oklch(100% 0 0);
+	--foreground: oklch(14.5% 0 0);
+	--primary: oklch(64.5% 0.2 45); /* Orange */
+	--primary-foreground: oklch(98% 0 0);
+	--secondary: oklch(96% 0 0);
+	--secondary-foreground: oklch(14.5% 0 0);
+	--muted: oklch(96% 0 0);
+	--muted-foreground: oklch(45% 0 0);
+	--accent: oklch(96% 0 0);
+	--accent-foreground: oklch(14.5% 0 0);
+	--border: oklch(92% 0 0);
+	--radius: 0.5rem;
 }
 
 .dark {
-  --background: oklch(10% 0 0); /* Neutral Dark */
-  --foreground: oklch(98% 0 0);
-  --primary: oklch(70% 0.19 45); /* Vibrant Orange for Dark */
-  --primary-foreground: oklch(10% 0 0);
-  --secondary: oklch(18% 0 0);
-  --secondary-foreground: oklch(98% 0 0);
-  --muted: oklch(18% 0 0);
-  --muted-foreground: oklch(65% 0 0);
-  --accent: oklch(18% 0 0);
-  --accent-foreground: oklch(98% 0 0);
-  --border: oklch(25% 0 0);
+	--background: oklch(10% 0 0); /* Neutral Dark */
+	--foreground: oklch(98% 0 0);
+	--primary: oklch(70% 0.19 45); /* Vibrant Orange for Dark */
+	--primary-foreground: oklch(10% 0 0);
+	--secondary: oklch(18% 0 0);
+	--secondary-foreground: oklch(98% 0 0);
+	--muted: oklch(18% 0 0);
+	--muted-foreground: oklch(65% 0 0);
+	--accent: oklch(18% 0 0);
+	--accent-foreground: oklch(98% 0 0);
+	--border: oklch(25% 0 0);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 body {
-  font-family: var(--font-mono);
-  background-color: var(--background);
-  color: var(--foreground);
-  transition: background-color 0.2s ease, color 0.2s ease;
-  -webkit-font-smoothing: antialiased;
+	font-family: var(--font-mono);
+	background-color: var(--background);
+	color: var(--foreground);
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+	-webkit-font-smoothing: antialiased;
 }

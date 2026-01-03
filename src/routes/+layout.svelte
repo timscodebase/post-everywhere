@@ -1,9 +1,8 @@
 <script lang="ts">
-import "./layout.css";
-import ThemeToggle from "$lib/components/ThemeToggle.svelte";
-
-const { children } = $props();
+	import "./layout.css";
+	import ThemeToggle from "$lib/components/ThemeToggle.svelte";
 </script>
+
 
 <div class="min-h-screen bg-background text-foreground font-mono selection:bg-primary/30">
   <header class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

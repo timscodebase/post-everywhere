@@ -1,17 +1,15 @@
 <script lang="ts">
-import { enhance } from "$app/forms";
-
 // Svelte 5 Runes for reactive state
-const postContent = $state("");
+const _postContent = $state("");
 let selectedPlatforms = $state<string[]>([]);
 
-const platforms = [
+const _platforms = [
 	{ id: "x", name: "X (Twitter)", icon: "🐦" },
 	{ id: "linkedin", name: "LinkedIn", icon: "💼" },
 	{ id: "facebook", name: "Facebook", icon: "📘" },
 ];
 
-function togglePlatform(id: string) {
+function _togglePlatform(id: string) {
 	if (selectedPlatforms.includes(id)) {
 		selectedPlatforms = selectedPlatforms.filter((p) => p !== id);
 	} else {
