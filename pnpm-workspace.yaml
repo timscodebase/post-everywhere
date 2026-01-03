@@ -1,3 +1,5 @@
 onlyBuiltDependencies:
-  - esbuild
   - '@tailwindcss/oxide'
+  - es5-ext
+  - esbuild
+  - svelte-preprocess
