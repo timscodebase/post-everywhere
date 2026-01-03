@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 
-	// Svelte 5 Runes for reactive state
+	// Correctly declared Svelte 5 Runes
 	let postContent = $state("");
 	let selectedPlatforms = $state<string[]>([]);
 
@@ -79,7 +79,7 @@
 			<button
 				type="submit"
 				disabled={!postContent || selectedPlatforms.length === 0}
-				class="w-full py-4 bg-primary text-primary-foreground rounded-lg hover:opacity-90 active:scale-[0.98] transition-all font-bold text-lg shadow-lg shadow-primary/20 uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
+				class="w-full py-4 bg-primary text-primary-foreground rounded-lg hover:opacity-90 active:scale-[0.98] transition-all font-bold text-lg shadow-lg shadow-primary/20 uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
 			>
 				Schedule Dispatch
 			</button>

@@ -1,11 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  // 1. Initialize as a $state rune so it's reactive and available to the template
-  let isDark = $state(true); 
+  // Initialize as a rune to prevent ReferenceError during SSR
+  let isDark = $state(true);
 
   onMount(() => {
-    // 2. Sync with actual document state on the client
+    // Sync UI state with the actual class on the client
     isDark = document.documentElement.classList.contains('dark');
   });
 
