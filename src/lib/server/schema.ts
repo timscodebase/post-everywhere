@@ -1,69 +1,40 @@
-import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
-import { sql } from "drizzle-orm";
-import type { InferSelectModel } from "drizzle-orm";
+// src/lib/server/db/schema.ts
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
-// --- Auth Tables (Lucia) ---
+// ... existing user and session tables ...
 
-export const users = sqliteTable("user", {
-  id: text("id").primaryKey(),
-  username: text("username").notNull(),
-  createdAt: integer("created_at", { mode: "timestamp" }).default(
-    sql`(strftime('%s', 'now'))`
-  ),
-});
-
-export type User = InferSelectModel<typeof users>;
-
-export const sessions = sqliteTable("session", {
+export const connections = sqliteTable("connections", {
   id: text("id").primaryKey(),
   userId: text("user_id")
     .notNull()
-    .references(() => users.id),
-  expiresAt: integer("expires_at").notNull(),
-});
-
-export type Session = InferSelectModel<typeof sessions>;
-
-// --- Application Tables ---
-
-export const connections = sqliteTable("connection", {
-  id: text("id").primaryKey(),
-  userId: text("user_id")
-    .notNull()
-    .references(() => users.id),
-  provider: text("provider").notNull(), // e.g., 'twitter', 'facebook', 'linkedin'
-  providerAccountId: text("provider_account_id").notNull(),
-  accessToken: text("access_token").notNull(), // Should be encrypted in production
+    .references(() => user.id),
+  platform: text("platform").notNull(), // 'x', 'facebook', 'linkedin', etc.
+  platformUserId: text("platform_user_id").notNull(),
+  platformUsername: text("platform_username"),
+  accessToken: text("access_token").notNull(), // In production, encrypt this
   refreshToken: text("refresh_token"),
-  expiresAt: integer("expires_at"),
-  createdAt: integer("created_at", { mode: "timestamp" }).default(
-    sql`(strftime('%s', 'now'))`
+  expiresAt: integer("expires_at", { mode: "timestamp" }),
+  createdAt: integer("created_at", { mode: "timestamp" }).$defaultFn(
+    () => new Date()
   ),
 });
 
-export const posts = sqliteTable("post", {
+export const posts = sqliteTable("posts", {
   id: text("id").primaryKey(),
   userId: text("user_id")
     .notNull()
-    .references(() => users.id),
+    .references(() => user.id),
   content: text("content").notNull(),
-  mediaUrls: text("media_urls"), // JSON string of URLs
-  status: text("status").default("draft"), // draft, scheduled, published, failed
-  scheduledFor: integer("scheduled_for", { mode: "timestamp" }),
-  createdAt: integer("created_at", { mode: "timestamp" }).default(
-    sql`(strftime('%s', 'now'))`
+  mediaUrls: text("media_urls"), // JSON string of image/video URLs
+  status: text("status")
+    .notNull()
+    .$type<"draft" | "scheduled" | "published" | "failed">(),
+  scheduledAt: integer("scheduled_at", { mode: "timestamp" }),
+  publishedAt: integer("published_at", { mode: "timestamp" }),
+  createdAt: integer("created_at", { mode: "timestamp" }).$defaultFn(
+    () => new Date()
   ),
 });
 
-// Track status of a post on a specific platform
-export const postDeployments = sqliteTable("post_deployment", {
-  id: text("id").primaryKey(),
-  postId: text("post_id")
-    .notNull()
-    .references(() => posts.id),
-  connectionId: text("connection_id")
-    .notNull()
-    .references(() => connections.id),
-  status: text("status").default("pending"), // pending, success, failed
-  externalId: text("external_id"), // ID returned by the social platform
-});
+export type Connection = typeof connections.$inferSelect;
+export type Post = typeof posts.$inferSelect;
