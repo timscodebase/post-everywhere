@@ -1,7 +1,8 @@
 <script lang="ts">
-  import './layout.css';
-  import ThemeToggle from '$lib/components/ThemeToggle.svelte';
-  let { children } = $props();
+import "./layout.css";
+import ThemeToggle from "$lib/components/ThemeToggle.svelte";
+
+const { children } = $props();
 </script>
 
 <div class="min-h-screen bg-background text-foreground font-mono selection:bg-primary/30">

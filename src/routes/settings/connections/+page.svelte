@@ -1,11 +1,11 @@
 <script lang="ts">
-	let { data } = $props();
-	
-	const platforms = [
-		{ id: "x", name: "X (Twitter)", icon: "🐦" },
-		{ id: "linkedin", name: "LinkedIn", icon: "💼" },
-		{ id: "facebook", name: "Facebook", icon: "📘" },
-	];
+const { data } = $props();
+
+const platforms = [
+	{ id: "x", name: "X (Twitter)", icon: "🐦" },
+	{ id: "linkedin", name: "LinkedIn", icon: "💼" },
+	{ id: "facebook", name: "Facebook", icon: "📘" },
+];
 </script>
 
 <div class="max-w-2xl mx-auto space-y-8 font-mono">

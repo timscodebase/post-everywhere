@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+import { onMount } from "svelte";
 
-  let isDark = $state(true);
+let isDark = $state(true);
 
-  onMount(() => {
-    isDark = document.documentElement.classList.contains('dark');
-  });
+onMount(() => {
+	isDark = document.documentElement.classList.contains("dark");
+});
 
-  function toggleTheme() {
-    isDark = !isDark;
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }
+function toggleTheme() {
+	isDark = !isDark;
+	if (isDark) {
+		document.documentElement.classList.add("dark");
+		localStorage.setItem("theme", "dark");
+	} else {
+		document.documentElement.classList.remove("dark");
+		localStorage.setItem("theme", "light");
+	}
+}
 </script>
 
 <button
