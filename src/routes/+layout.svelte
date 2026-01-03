@@ -1,6 +1,7 @@
 <script lang="ts">
 	import "./layout.css";
 	import ThemeToggle from "$lib/components/ThemeToggle.svelte";
+	const { children } = $props();
 </script>
 
 
@@ -23,6 +24,6 @@
   </header>
 
   <main class="container mx-auto px-4 py-8 max-w-7xl">
-    {@render children()}
+    { @render children() }
   </main>
 </div>

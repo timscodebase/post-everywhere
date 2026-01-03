@@ -1,7 +1,7 @@
 <script lang="ts">
 const { data } = $props();
 
-const _platforms = [
+const platforms = [
 	{ id: "x", name: "X (Twitter)", icon: "🐦" },
 	{ id: "linkedin", name: "LinkedIn", icon: "💼" },
 	{ id: "facebook", name: "Facebook", icon: "📘" },

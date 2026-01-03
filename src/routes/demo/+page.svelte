@@ -2,4 +2,4 @@
 
 </script>
 
-<a href={resolve('/demo/lucia')}>lucia</a>
+<a href='/demo/lucia'>lucia</a>
