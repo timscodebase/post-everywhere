@@ -16,20 +16,20 @@ export interface AuthResult {
 export abstract class SocialProvider {
   abstract readonly platformId: string;
 
-  // Returns the URL to redirect the user for OAuth
+  // Generates the OAuth redirect URL
   abstract getAuthUrl(state: string): string;
 
-  // Handles the code from the redirect and returns tokens/user info
+  // Processes the OAuth callback to get tokens
   abstract handleCallback(code: string): Promise<AuthResult>;
 
-  // Publishes the actual content
+  // Sends the post to the specific platform API
   abstract post(
     accessToken: string,
     payload: PostPayload
   ): Promise<{ platformPostId: string }>;
 
-  // Optional: refresh tokens if they expire
+  // Refreshes tokens if supported
   async refresh(refreshToken: string): Promise<Partial<AuthResult>> {
-    throw new Error("Refresh not implemented for this provider");
+    throw new Error(`Refresh not implemented for ${this.platformId}`);
   }
 }

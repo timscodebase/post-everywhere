@@ -1,37 +1,37 @@
 // src/lib/server/providers/x.ts
 import { SocialProvider, type AuthResult, type PostPayload } from "./base";
+import { env } from "$env/dynamic/private";
 
 export class XProvider extends SocialProvider {
   readonly platformId = "x";
 
   getAuthUrl(state: string): string {
-    // Mock-up of X OAuth2 URL generation
     const rootUrl = "https://twitter.com/i/oauth2/authorize";
     const options = {
       response_type: "code",
-      client_id: process.env.X_CLIENT_ID!,
-      redirect_uri: process.env.X_REDIRECT_URI!,
+      client_id: env.X_CLIENT_ID || "",
+      redirect_uri: env.X_REDIRECT_URI || "",
       scope: "tweet.read tweet.write users.read offline.access",
       state,
-      code_challenge: "challenge",
+      code_challenge: "challenge", // Use proper PKCE in production
       code_challenge_method: "plain",
     };
-    const qs = new URLSearchParams(options).toString();
-    return `${rootUrl}?${qs}`;
+    return `${rootUrl}?${new URLSearchParams(options).toString()}`;
   }
 
   async handleCallback(code: string): Promise<AuthResult> {
-    // Logic to exchange code for access_token with X API
+    // Example: Exchange code for tokens using fetch()
     return {
-      platformUserId: "12345",
-      platformUsername: "example_user",
-      accessToken: "dummy_token",
+      platformUserId: "x-user-123",
+      platformUsername: "x_handle",
+      accessToken: "mock_access_token",
+      refreshToken: "mock_refresh_token",
+      expiresAt: new Date(Date.now() + 7200 * 1000),
     };
   }
 
   async post(accessToken: string, payload: PostPayload) {
-    // Logic to call https://api.twitter.com/2/tweets
-    console.log(`Posting to X: ${payload.text}`);
-    return { platformPostId: "tweet_id_999" };
+    console.log(`[X API] Posting: ${payload.text}`);
+    return { platformPostId: "tweet_999" };
   }
 }

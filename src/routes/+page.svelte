@@ -65,7 +65,7 @@
 
       <button
         onclick={handlePost}
-        class="w-full py-2 bg-black text-white rounded-md hover:bg-gray-800 font-medium"
+        class="w-full py-2 bg-black text-white rounded-md hover:bg-gray-800 dark:hover:bg-gray-300 transition-colors font-medium"
       >
         Schedule Post
       </button>

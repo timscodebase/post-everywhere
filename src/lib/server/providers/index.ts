@@ -1,3 +1,4 @@
+// src/lib/server/providers/index.ts
 import { XProvider } from "./x";
 // import { FacebookProvider } from './facebook';
 
@@ -6,4 +7,4 @@ export const providers = {
   // facebook: new FacebookProvider(),
 } as const;
 
-export type Platform = keyof typeof providers;
+export type PlatformId = keyof typeof providers;
