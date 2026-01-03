@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let isDark = $state(true);
+	let isDark = $state(false);
 
 	onMount(() => {
+		// Sync initial UI state with the actual class applied in app.html
 		isDark = document.documentElement.classList.contains('dark');
 	});
 
@@ -21,12 +22,10 @@
 
 <button
 	onclick={toggleTheme}
-	class="p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+	class="p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
 	aria-label="Toggle Theme"
 >
 	{#if isDark}
-		<span class="text-xl">☀️</span>
-	{:else}
-		<span class="text-xl">🌙</span>
-	{/if}
+		<span class="text-xl">🌙</span> {:else}
+		<span class="text-xl">☀️</span> {/if}
 </button>

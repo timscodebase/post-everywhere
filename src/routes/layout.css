@@ -1,3 +1,11 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+/* This tells Tailwind to activate 'dark:' classes when a '.dark' class is on the html tag */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Optional: Smooth transition for theme colors */
+body {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}

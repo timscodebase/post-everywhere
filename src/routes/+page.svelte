@@ -32,7 +32,7 @@
 
   <main class="grid gap-6 md:grid-cols-2">
     <!-- Composer -->
-    <section class="space-y-4 border rounded-lg p-6 bg-white shadow-sm">
+    <section class="space-y-4 border rounded-lg p-6 shadow-sm">
       <h2 class="text-xl font-semibold">Compose</h2>
 
       <div class="space-y-2">
@@ -72,7 +72,7 @@
     </section>
 
     <!-- Preview / Status (Placeholder) -->
-    <section class="space-y-4 border rounded-lg p-6 bg-gray-50">
+    <section class="space-y-4 border rounded-lg p-6 ">
       <h2 class="text-xl font-semibold">Recent Activity</h2>
       <div class="text-sm text-gray-500 text-center py-10">
         No posts yet. Connect an account to get started.
