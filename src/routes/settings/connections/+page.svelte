@@ -1,5 +1,4 @@
 <script lang="ts">
-	// Svelte 5 Runes for capturing data from the server loader
 	const { data } = $props();
 
 	const platforms = [
@@ -12,12 +11,16 @@
 <div class="max-w-2xl mx-auto space-y-8 font-mono">
 	<header class="space-y-2">
 		<h1 class="text-3xl font-bold tracking-tighter uppercase">Connections</h1>
-		<p class="text-muted-foreground italic">Manage your linked accounts.</p>
+		<p class="text-muted-foreground italic">
+			Manage your linked social accounts.
+		</p>
 	</header>
 
 	<div class="grid gap-4">
 		{#each platforms as platform}
 			{@const conn = data.connections.find((c) => c.platform === platform.id)}
+			{@const clientId = data.clientIds[platform.id]}
+
 			<div
 				class="flex items-center justify-between p-6 border border-border rounded-xl bg-secondary/5"
 			>
@@ -26,11 +29,20 @@
 					<div>
 						<h3 class="font-bold uppercase tracking-tight">{platform.name}</h3>
 						{#if conn}
-							<p class="text-xs text-primary font-bold tracking-widest">
-								CONNECTED AS @{conn.platformUsername}
+							<p
+								class="text-xs text-primary font-bold tracking-widest uppercase"
+							>
+								Connected as @{conn.platformUsername}
 							</p>
 						{:else}
-							<p class="text-xs text-muted-foreground uppercase">Not Linked</p>
+							<p class="text-xs text-muted-foreground uppercase">
+								Not Linked
+								{#if clientId}
+									<span class="ml-2 opacity-50 text-[10px]"
+										>(ID: {clientId.slice(0, 4)}...)</span
+									>
+								{/if}
+							</p>
 						{/if}
 					</div>
 				</div>
@@ -49,12 +61,9 @@
 					{:else}
 						<a
 							href="/auth/login/{platform.id}"
-							class="px-4 py-2 bg-primary text-primary-foreground text-xs font-bold rounded uppercase transition-all
-							{platform.id !== 'x'
-								? 'opacity-30 pointer-events-none grayscale'
-								: 'hover:opacity-90 active:scale-95'}"
+							class="px-4 py-2 bg-primary text-primary-foreground text-xs font-bold rounded uppercase transition-all hover:opacity-90 active:scale-95"
 						>
-							{platform.id === "x" ? "Connect" : "Soon"}
+							Connect
 						</a>
 					{/if}
 				</div>

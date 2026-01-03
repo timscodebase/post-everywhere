@@ -1,5 +1,10 @@
 import { error, redirect } from "@sveltejs/kit";
 import { and, eq } from "drizzle-orm";
+import {
+	FACEBOOK_CLIENT_ID,
+	LINKEDIN_CLIENT_ID,
+	X_CLIENT_ID,
+} from "$env/static/private";
 import { db } from "$lib/server/db";
 import { connections } from "$lib/server/db/schema";
 
@@ -13,6 +18,11 @@ export const load = async ({ locals }) => {
 
 	return {
 		connections: userConnections,
+		clientIds: {
+			x: X_CLIENT_ID,
+			linkedin: LINKEDIN_CLIENT_ID,
+			facebook: FACEBOOK_CLIENT_ID,
+		},
 	};
 };
 

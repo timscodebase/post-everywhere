@@ -1,11 +1,11 @@
-import { XProvider } from './x';
+import { FacebookProvider } from "./facebook";
+import { LinkedInProvider } from "./linkedin";
+import { XProvider } from "./x";
 
-// Ensure the class is instantiated as an object
 export const providers = {
 	x: new XProvider(),
-	// Add placeholder objects for others to prevent crashes while developing
-	linkedin: null,
-	facebook: null
+	linkedin: new LinkedInProvider(),
+	facebook: new FacebookProvider(),
 } as const;
 
 export type PlatformId = keyof typeof providers;
