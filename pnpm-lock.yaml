@@ -21,7 +21,7 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       '@sveltejs/adapter-vercel':
-        specifier: ^5.5.0
+        specifier: ^5.10.3
         version: 5.10.3(@sveltejs/kit@2.49.2(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.46.1)(vite@6.4.1(@types/node@22.19.3)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.46.1)(vite@6.4.1(@types/node@22.19.3)(jiti@2.6.1)(lightningcss@1.30.2)))(rollup@4.54.0)
       '@tailwindcss/forms':
         specifier: ^0.5.11
@@ -30,7 +30,7 @@ importers:
         specifier: ^0.5.19
         version: 0.5.19(tailwindcss@4.1.18)
       drizzle-orm:
-        specifier: ^0.38.0
+        specifier: ^0.38.4
         version: 0.38.4(@libsql/client@0.14.0)
     devDependencies:
       '@biomejs/biome':
@@ -40,22 +40,22 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1(@sveltejs/kit@2.49.2(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.46.1)(vite@6.4.1(@types/node@22.19.3)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.46.1)(vite@6.4.1(@types/node@22.19.3)(jiti@2.6.1)(lightningcss@1.30.2)))
       '@sveltejs/kit':
-        specifier: ^2.16.0
+        specifier: ^2.49.2
         version: 2.49.2(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.46.1)(vite@6.4.1(@types/node@22.19.3)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.46.1)(vite@6.4.1(@types/node@22.19.3)(jiti@2.6.1)(lightningcss@1.30.2))
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^5.0.0
+        specifier: ^5.1.1
         version: 5.1.1(svelte@5.46.1)(vite@6.4.1(@types/node@22.19.3)(jiti@2.6.1)(lightningcss@1.30.2))
       '@tailwindcss/vite':
         specifier: ^4.1.18
         version: 4.1.18(vite@6.4.1(@types/node@22.19.3)(jiti@2.6.1)(lightningcss@1.30.2))
       '@types/node':
-        specifier: ^22.0.0
+        specifier: ^22.19.3
         version: 22.19.3
       autoprefixer:
         specifier: ^10.4.23
         version: 10.4.23(postcss@8.5.6)
       drizzle-kit:
-        specifier: ^0.30.0
+        specifier: ^0.30.6
         version: 0.30.6
       postcss:
         specifier: ^8.5.6
@@ -64,7 +64,7 @@ importers:
         specifier: ^5.46.1
         version: 5.46.1
       svelte-check:
-        specifier: ^4.1.0
+        specifier: ^4.3.5
         version: 4.3.5(picomatch@4.0.3)(svelte@5.46.1)(typescript@5.9.3)
       tailwindcss:
         specifier: ^4.1.18
@@ -76,7 +76,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       vite:
-        specifier: ^6.0.0
+        specifier: ^6.4.1
         version: 6.4.1(@types/node@22.19.3)(jiti@2.6.1)(lightningcss@1.30.2)
 
 packages:
