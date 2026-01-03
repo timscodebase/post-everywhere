@@ -1,31 +1,32 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
 
-	let isDark = $state(false);
+  let isDark = $state(true);
 
-	onMount(() => {
-		// Sync initial UI state with the actual class applied in app.html
-		isDark = document.documentElement.classList.contains('dark');
-	});
+  onMount(() => {
+    isDark = document.documentElement.classList.contains('dark');
+  });
 
-	function toggleTheme() {
-		isDark = !isDark;
-		if (isDark) {
-			document.documentElement.classList.add('dark');
-			localStorage.setItem('theme', 'dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-			localStorage.setItem('theme', 'light');
-		}
-	}
+  function toggleTheme() {
+    isDark = !isDark;
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }
 </script>
 
 <button
-	onclick={toggleTheme}
-	class="p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-	aria-label="Toggle Theme"
+  onclick={toggleTheme}
+  class="h-10 w-10 flex items-center justify-center rounded-md border border-border bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
+  aria-label="Toggle Theme"
 >
-	{#if isDark}
-		<span class="text-xl">🌙</span> {:else}
-		<span class="text-xl">☀️</span> {/if}
+  {#if isDark}
+    <span class="text-lg">🌙</span>
+  {:else}
+    <span class="text-lg">☀️</span>
+  {/if}
 </button>
